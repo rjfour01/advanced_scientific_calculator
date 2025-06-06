@@ -7,24 +7,41 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:advanced_scientific_calculator/main.dart';
+import 'package:advanced_scientific_calculator/widgets/display.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  group('Display Widget Tests', () {
+    testWidgets('Display shows expression and result', (WidgetTester tester) async {
+      // Build our widget and trigger a frame
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: Display(
+              expression: '2 + 2',
+              result: '4',
+            ),
+          ),
+        ),
+      );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+      // Verify that the expression and result are displayed
+      expect(find.text('2 + 2'), findsOneWidget);
+      expect(find.text('4'), findsOneWidget);
+    });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    testWidgets('Display shows default values when empty', (WidgetTester tester) async {
+      // Build our widget with default values
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: const Display(),
+          ),
+        ),
+      );
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+      // Verify default values
+      expect(find.text(''), findsOneWidget); // empty expression
+      expect(find.text('0'), findsOneWidget); // default result
+    });
   });
 }

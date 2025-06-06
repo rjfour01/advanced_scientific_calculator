@@ -1,0 +1,32 @@
+name: advanced_scientific_calculator
+
+description: >-
+  A powerful offline-first scientific calculator built with Flutter. Supports algebra, trigonometry, calculus, history, graph plotting, and themes.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  math_expressions: ^2.2.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  path_provider: ^2.1.1
+  fl_chart: ^0.63.0
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.0.7
+  provider: ^6.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
